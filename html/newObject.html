@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый контакт</title>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://fb.me/react-0.14.3.js"></script>
+    <script src="https://fb.me/react-dom-0.14.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div id="app"></div>
+<style>
+    .row {
+        margin-top: 10px;
+    }
+</style>
+<script type="text/babel">
+    class Panel extends React.Component {
+        render(){
+            return(
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12"><Input name="Название"/></div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6"><Input name="Адрес"/></div>
+                        <div className="col-md-6"><Input name="Район"/></div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6"><Input name="Тип обслуживания"/></div>
+                        <div className="col-md-6"><Input name="Категория объекта"/></div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6"><Input name="Участок"/></div>
+                        <div className="col-md-6"><Input name="Инженер"/></div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6"><Input name="Ответственное лицо"/></div>
+                        <div className="col-md-6"><Input name="Персональный менеджер"/></div>
+                    </div>
+                    <div className="row justify-content-center">
+                        <ButtonAccept />
+                    </div>
+                </div>
+            )}
+    }
+    class Input extends React.Component {
+        render(){
+            return(
+                <input className="form-control" placeholder={this.props.name}></input>
+            )
+        }
+    }
+    class Select extends React.Component {
+        render () {
+            var opt = this.props.options;
+            var o = opt.map(x => <option>{x}</option>);
+            return (
+                <select className="form-control" placeholder="1">
+                    {o}
+                </select>
+            )}
+    }
+    class ButtonAccept extends React.Component {
+        render () {
+            return (
+                <button className="btn btn-secondary">Отправить</button>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Panel/>,
+        document.querySelector('#app')
+    )
+</script>
+</body>
+</html>
