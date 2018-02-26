@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты</title>
+
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://fb.me/react-0.14.3.js"></script>
+    <script src="https://fb.me/react-dom-0.14.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<style>
+    .row {
+        margin: 10px;
+    }
+</style>
+<div id="app"></div>
+<script src="../script/deleteRow.js"></script>
+<script type="text/babel">
+    class Panel extends React.Component {
+        render(){
+            return (
+                <div className="container">
+                    <Setting />
+                    <Table/>
+                </div>
+            )};
+    }
+    class Setting extends React.Component {
+        render (){
+            return(
+                <div className="row">
+                    <div className="col-md-3"><ButtonAdd /></div>
+                    <div className="col-md-6"><SearchInput /></div>
+                    <div className="col-md-3"><ButtonSearch /></div>
+                </div>
+            )};
+    }
+    class Table extends React.Component {
+        render () {
+            return (
+                <table className="table table-bordered table-hover table-striped">
+                    <TableHead />
+                    <TableRow/>
+                </table>
+            )};
+    };
+    class TableHead extends React.Component {
+        render () {
+            return(
+                <thead className="thead-default">
+                <tr>
+                    <th></th>
+                    <th>Название</th>
+                    <th>Адрес</th>
+                    <th>Район</th>
+                    <th>Тип обслуживания</th>
+                    <th>Категория объекта</th>
+                    <th>Участок</th>
+                    <th>Инженер</th>
+                    <th>Ответственное лицо</th>
+                    <th>Персональный менеджер</th>
+                </tr>
+                </thead>
+            )};
+    }
+    class TableRow extends React.Component {
+        render (){
+            return(
+                <tbody>
+                <tr>
+                    <td><span className="editText">Изменить</span> <span className="removeText">Удалить</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span className="editText">Изменить</span> <span className="removeText">Удалить</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span className="editText">Изменить</span> <span className="removeText">Удалить</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span className="editText">Изменить</span> <span className="removeText">Удалить</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            )};
+    }
+    class ButtonAdd extends React.Component {
+        render(){
+            return (<button className="btn btn-secondary">Добавить объект</button>)
+        }
+    }
+    class SearchInput extends React.Component {
+        render(){
+            return(
+                <input className="form-control" id="searchInput"></input>
+            )}
+    }
+    class ButtonSearch extends React.Component {
+        render (){
+            return (<button className="btn btn-secondary" id="searchButton">Искать</button>)
+        }
+    }
+    class Change extends React.Component {
+        render(){
+            return (<td><span className="editText">Изменить</span> <span className="removeText">Удалить</span></td>)
+        }
+    }
+    ReactDOM.render(
+        <Panel/>,
+        document.querySelector('#app')
+    );
+</script>
+</body>
+</html>
