@@ -8,10 +8,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
 
     <title>Новая заявка</title>
 </head>
 <body>
+    <style>
+        .row {
+            margin-top: 10px;
+        }
+        span {
+            margin-left: 10px;
+        }
+    </style>
     <div id="app"></div>
     <script type="text/babel">
         class Panel extends React.Component {
@@ -19,12 +28,21 @@
                 return(
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-3"><Button /></div>
-                            <div className="col-md-3"><TextForButton /></div>
-                            <div className="col-md-6"><Input /></div>
+                            <div className="col-md-6"><Button /></div>
+                            <div className="col-md-6"><SelectProblem/></div>
                         </div>
-                        <div>
-
+                        <div className="row">
+                            <div className="col-md-6"><SelectPriority/></div>
+                            <div className="col-md-6"><InputContact /></div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12"><TextArea/></div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12"><SelectEngineer/></div>
+                        </div>
+                        <div className="row justify-content-center">
+                            <div><ButtonAccept/></div>
                         </div>
                     </div>
                 )
@@ -33,23 +51,77 @@
         class TextForButton extends React.Component {
             render () {
                 return (
-                    <p>Название объекта</p>
+                    <span>Название объекта</span>
                 )}
         }
         class Button extends React.Component {
             render () {
                 return (
-                    <button className="btn btn-default">Выберите адрес</button>
+                    <div>
+                        <button className="btn btn-default">Выберите адрес</button>
+                        <TextForButton/>
+                    </div>
                 )}
         }
-        class Input extends React.Component {
+        class SelectProblem extends React.Component {
             render () {
                 return (
-                    <input className="form-control"></input>
+                    <select className="form-control">
+                        <option selected>Выберите неисправность...</option>
+                        <option>Возгорание</option>
+                        <option>Поломка</option>
+                        <option>Задымление</option>
+                    </select>
                 )}
         }
+        class SelectPriority extends React.Component {
+            render () {
+                return (
+                    <select className="form-control">
+                        <option value="selected">Выберите приоритет...</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                )}
+        }
+        class InputContact extends React.Component {
+            render () {
+                return (
+                    <div>
+                        <input className="form-control" placeholder="Контактное лицо"></input>
+                    </div>
+                )}
+        }
+        class TextArea extends React.Component {
+            render () {
+                return (
+                    <div>
+                        <textarea className="form-control" rows="3" placeholder="Информация"></textarea>
+                    </div>
+                )
+            }
+        }
+        class SelectEngineer extends React.Component {
+            render () {
+                return (
+                    <select className="form-control">
+                        <option selected>Выберите ответственного инженера</option>
+                        <option>Васильев</option>
+                        <option>Григорьев</option>
+                        <option>Краснов</option>
+                    </select>
+                )}
+        }
+        class ButtonAccept extends React.Component {
+            render () {
+                return (
+                    <button className="btn btn-secondary">Отправить</button>
+                )
+            }
+        }
         ReactDOM.render(
-            <Panel />,
+            <Panel/>,
             document.querySelector('#app')
         );
     </script>
