@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="https://fb.me/react-0.14.3.js"></script>
+  <script src="https://fb.me/react-dom-0.14.3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  <script src="../script/findInTable.js"></script>
+
+
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Заявки</title>
+</head>
+<body>
+  <div id="app"></div>
+    <script type="text/babel">
+    const data = [
+      {
+        "id":1,
+        "address":"Улица Первая",
+        "notes":null,
+        "customerRemarks":null,
+        "flat":100,
+        "entrances":5,
+        "storey":4,
+        "riskZone":null
+        },{
+        "id":2,
+        "address":"Улица Вторая",
+        "notes":"Демонтаж обоудования",
+        "customerRemarks":null,
+        "flat":null,
+        "entrances":0,
+        "storey":3,
+        "riskZone":false
+        },{
+        "id":3,
+        "address":"Улица Третья",
+        "notes":"Монтаж оборудования",
+        "customerRemarks":"Здесь клиент добавил свои мысли",
+        "flat":200,
+        "entrances":5,
+        "storey":3,
+        "riskZone":true
+          }
+      ]
+    class Panel extends React.Component {
+      render(){
+        return (
+          <div className="container">
+            <Setting />
+            <Table data={data}/>
+          </div>
+        )};
+    }
+    class Setting extends React.Component {
+      render (){
+          return(
+            <div className="row">
+              <div className="col-md-3"><ButtonAdd /></div>
+              <div className="col-md-6"><SearchInput /></div>
+              <div className="col-md-3"><ButtonSearch /></div>
+            </div>
+          )};
+    }
+    class Table extends React.Component {
+      render () {
+        return (
+          <table className="table table-bordered table-hover table-striped">
+            <TableHead />
+            <TableRow data={this.props.data}/>
+          </table>
+        )};
+      };
+    class TableHead extends React.Component {
+      render () {
+        return(
+          <thead className="thead-default">
+            <tr>
+              <th></th>
+              <th>Номер заявки</th>
+              <th>Адрес</th>
+              <th>Мероприятия</th>
+              <th>Примечание клиента</th>
+              <th>Номер квартиры</th>
+              <th>Входы</th>
+              <th>Этаж</th>
+              <th>Зона риска</th>
+            </tr>
+          </thead>
+        )};
+    }
+    class TableRow extends React.Component {
+      render (){
+        var obj = this.props.data;
+        var tr = obj.map(x => <tr><Change /><td>{x.id}</td><td>{x.address}</td><td>{x.notes}</td><td>{x.customerRemarks}</td><td>{x.flat}</td><td>{x.entrances}</td><td>{x.storey}</td><td>{x.riskZone}</td></tr>)
+        return(
+          <tbody>
+            {tr}
+          </tbody>
+        )};
+    }
+    class ButtonAdd extends React.Component {
+      render(){
+        return (<button className="btn btn-secondary">Добавить заявку</button>)
+      }
+    }
+    class SearchInput extends React.Component {
+        render(){
+        return(
+            <input className="form-control" id="searchInput"></input>
+        )}
+    }
+    class ButtonSearch extends React.Component {
+      render (){
+          return (<button className="btn btn-secondary" id="searchButton">Искать</button>)
+      }
+    }
+    class Change extends React.Component {
+            render(){
+                return (<td><span className="editText">Изменить</span> <span className="removeText">Удалить</span></td>)
+            }
+    }
+    ReactDOM.render(
+      <Panel data={data}/>,
+      document.querySelector('#app')
+    );
+  </script>
+  <script src="../script/storage.js"></script>
+  <script src="../script/deleteRow.js"></script>
+  <script src="../script/editRequest.js"></script>
+</body>
+</html>

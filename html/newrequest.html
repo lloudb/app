@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://fb.me/react-0.14.3.js"></script>
+    <script src="https://fb.me/react-dom-0.14.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Новая заявка</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        class Panel extends React.Component {
+            render(){
+                return(
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-3"><Button /></div>
+                            <div className="col-md-3"><TextForButton /></div>
+                            <div className="col-md-6"><Input /></div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                )
+            }
+        }
+        class TextForButton extends React.Component {
+            render () {
+                return (
+                    <p>Название объекта</p>
+                )}
+        }
+        class Button extends React.Component {
+            render () {
+                return (
+                    <button className="btn btn-default">Выберите адрес</button>
+                )}
+        }
+        class Input extends React.Component {
+            render () {
+                return (
+                    <input className="form-control"></input>
+                )}
+        }
+        ReactDOM.render(
+            <Panel />,
+            document.querySelector('#app')
+        );
+    </script>
+</body>
+</html>

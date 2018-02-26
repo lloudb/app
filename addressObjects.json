@@ -1,0 +1,30 @@
+[
+  {
+    "id":1,
+    "address":"Улица Первая",
+    "notes":null,
+    "customerRemarks":null,
+    "flat":100,
+    "entrances":5,
+    "storey":4,
+    "riskZone":null
+    },{
+    "id":2,
+    "address":"Улица Вторая",
+    "notes":"Демонтаж обоудования",
+    "customerRemarks":null,
+    "flat":null,
+    "entrances":0,
+    "storey":3,
+    "riskZone":false
+    },{
+    "id":3,
+    "address":"Улица Третья",
+    "notes":"Монтаж оборудования",
+    "customerRemarks":"Здесь клиент добавил свои мысли",
+    "flat":200,
+    "entrances":5,
+    "storey":3,
+    "riskZone":true
+      }
+  ]
